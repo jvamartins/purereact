@@ -1,0 +1,36 @@
+Existem algumas formas de se escrever funções em javascript
+
+1)Named Functions: sāo as funções nomeadas: escritas do modo padrāo:
+
+function namedFunction(a, b) {
+  console.log(a, b);
+}
+
+2)Anonymous Functions: funções anônimas: existem dentro de uma variável:
+
+const functionA = function (a, b) {
+  console.log(a, b);
+};
+
+3)Arrow Functions: uma nova forma de escrita que veio junto com o ES6. Possuem uma sintaxe diferente
+além de uma outra forma de tratamento do 'this':
+
+const functionB = (a, b) => {
+  console.log(a, b);
+};
+
+*Todas as arrow functions sāo anônimas. Lembrando que funções anônimas nāo possuem nome, e devem ser
+acessadas através de uma variável.
+
+Notas: se a arrow function possuem apenas uma instruçāo de retorno (return), é possível simplificar 
+ainda mais, omitindo o 'return':
+
+const functionB = (a, b) => a + b;
+
+E se eu tenho no retorno um objeto, é preciso por parênteses entre as chaves para que o javascript
+reconheça o início do objeto:
+
+const functionD = (nome, email) => ({
+  nome,
+  email,
+});
