@@ -1,0 +1,35 @@
+Com o ES6, foram introduzidos duas novas formas de declarar variáveis, além do 'var': 'let' e 'const'.
+'var' possui um escopo de funçāo, ou seja, ela é vista em todo o corpo da funçāo:
+
+function letConst() {
+  var x = 10;
+  if (true) {
+    x += 10;
+  }
+  console.log(x);
+}
+
+Ao executar essa funçāo, o valor de x será 20, pois x é vista em todo o escopo da funçāo. Já com 'let' e 'const',
+o escopo muda: agora eles possuem escopo de bloco, ou seja, sāo vistas apenas no escopo de onde foram declaradas.
+
+function letConst() {
+  var x = 10;
+  if (true) {
+    let y = 10;
+    const z = 10;
+    x += 10;
+  }
+  console.log(x, y, z);
+}
+
+Ao executar essa funçāo, iria retornar um erro, pois x e y nāo sāo vistas fora do escopo do 'if', onde foram declaradas.
+
+Uma observaçāo do const é que ele nāo aceita novas declarações, só podendo ser uma vez. No entanto, se eu possuo um objeto:
+
+const obj = {
+  nome: "John",
+};
+
+É possível alterar suas propriedades sem problemas:
+
+obj.email = "xpto";
