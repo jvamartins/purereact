@@ -1,0 +1,38 @@
+Em javascript, existe o conceito de 'this', que tem seu valor dependente de como uma funçāo é chamada.
+Em uma funçāo regular por exemplo (named function):
+
+function consoleThis() {
+  console.log(this);
+}
+
+O valor de 'this' vai depender do contexto onde ela foi invocada. Se foi através do console de um navegador,
+recebe o objeto 'window'. Se for através de uma aplicaçāo nodejs, recebe o objeto 'global'. Outra forma que se
+pode alterar o valor to 'this' é com o uso do modo estrito (strict mode):
+
+"use strict"
+function consoleThis() {
+  console.log(this);
+}
+
+O valor de 'this' será 'undefined', pois no modo estrito, algumas regras diferentes se aplicam. No entanto,
+é possível modificar o valor do 'this' com a chamada de algumas funções:
+
+const consoleLogThis = consoleThis.bind(42); - o 'bind' foi introduzido para mudar o valor de this.
+Ele retorna uma funçāo anônima que ao ser invocada, vai mudar o valor do 'this' para 42.
+
+Outra forma seria com o 'apply' e o 'call'. Ambas invocam imediatamente a funçāo, sendo diferentes
+na passagem de parâmetros:
+
+consoleThis.call("Joāo");
+consoleThis.apply("Víctor");
+
+Todas essas regras se aplicam para 'named functions'. Podem ser utilizadas para quando se quer 
+o valor dinâmico do 'this' nas funções. No entanto, com 'arrow functions', esse comportamento é diferente:
+
+const arrowFunc = () => {
+  console.log(this);
+};
+
+Ao executar a funçāo, o valor impresso será o de um objeto vazio. Com 'arrow functions', o valor do 'this'
+depende do contexto de execuçāo onde foi inserido. Assim, ele recebe o valor do objeto global.
+Se o objeto global for vazio, sempre vai ser vazio, mesmo se tiver 'apply' ou 'call'.
